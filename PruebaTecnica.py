@@ -100,15 +100,19 @@ class ArchivoXlsx:
 
     def enviarEmail(self, email, destinatario):
         # Conexion con Gmail
-        conexion = smtplib.SMTP('smtp.gmail.com', 587)
+        smtp_server = 'smtp.gmail.com'
+        smtp_port = 587
+        email_address = 'pruebatecnicaauxprog@gmail.com'
+        email_password = 'ozgw ynet vuup xeuu'
+        conexion = smtplib.SMTP(smtp_server, smtp_port)
         conexion.ehlo()
 
         conexion.starttls()
-        conexion.login('pruebatecnicaauxprog@gmail.com','ozgw ynet vuup xeuu')
+        conexion.login(email_address,email_password)
 
         # Enviar email
         print(destinatario)
-        conexion.sendmail('pruebatecnicaauxprog@gmail.com', destinatario, email)
+        conexion.sendmail(email_address, destinatario, email)
 
     def contarCiudades(self):
         # contar ciudades pendientes y calcular el monto total de entregas finalizadas
